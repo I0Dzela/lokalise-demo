@@ -9,6 +9,7 @@ pipeline {
          stage('docker rebuild/restart') {
              steps {
                  sh '''
+                 curl -sfL https://raw.githubusercontent.com/lokalise/lokalise-cli-2-go/master/install.sh | sh
                  ./bin/lokalise2 \
                    --token a701f9bb80485535e3c314f4e39ad09511842ef5 \
                    --project-id 1878556462a719c3454886.17115275 \
