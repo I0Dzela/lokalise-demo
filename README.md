@@ -1,1 +1,3 @@
 # lokalise-demo
+
+scm trigger
