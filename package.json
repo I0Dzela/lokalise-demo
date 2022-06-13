@@ -6,6 +6,7 @@
     "start": "ng serve",
     "start:ru": "ng serve --configuration ru",
     "build": "ng build",
+    "build:ru": "ng build --configuration ru",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "i18n": "ng xi18n --output-path src/i18n"

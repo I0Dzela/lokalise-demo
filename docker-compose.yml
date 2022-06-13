@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  lokalise_demo:
+    build: .
+    image: "i0/lokalise-demo"
+    ports:
+      - 3333:80
+    container_name: "i0.lokalise_demo"
