@@ -2,26 +2,48 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
-## Development server
+### 1. add lokalize
+  ```shell
+  $ ng add @angular/localize --skip-confirmation
+  ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 2. generate i18n xlf file
+  2.1 mark text for translation
+  ```shell
+  src/app/app.component.html
+  //
+  <h1 i18n="main header|Friendly welcoming message">Hello world!</h1>
+  ```
+  2.2 generate i18n xlf file
+  ```shell
+  $ npm run i18n
+  ```
 
-## Code scaffolding
+### 3. create translation file for other language (ru)
+  3.1 copy src/i18n/messages.xlf -> src/i18n/messages.ru.xlf  
+  3.2 make changes
+  ```shell
+  $ sdiff.exe -w 212 src/i18n/messages.xlf src/i18n/messages.ru.xlf
+  <?xml version="1.0" encoding="UTF-8" ?>                                                                 <?xml version="1.0" encoding="UTF-8" ?>
+  <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">                                     <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en-US" datatype="plaintext" original="ng2.template">                         |   <file source-language="en-US" datatype="plaintext" original="ng2.template" target-language="ru">
+      <body>                                                                                                  <body>
+        <trans-unit id="2241399650733502220" datatype="html">                                                   <trans-unit id="2241399650733502220" datatype="html">
+          <source>Hello world!</source>                                                                           <source>Hello world!</source>
+                                                                                                        >         <target>Всем привет!</target>
+          <context-group purpose="location">                                                                      <context-group purpose="location">
+            <context context-type="sourcefile">src/app/app.component.html</context>                                 <context context-type="sourcefile">src/app/app.component.html</context>
+            <context context-type="linenumber">1</context>                                                          <context context-type="linenumber">1</context>
+          </context-group>                                                                                        </context-group>
+          <note priority="1" from="description">Friendly welcoming message</note>                                 <note priority="1" from="description">Friendly welcoming message</note>
+          <note priority="1" from="meaning">main header</note>                                                    <note priority="1" from="meaning">main header</note>
+        </trans-unit>                                                                                           </trans-unit>
+      </body>                                                                                                 </body>
+    </file>                                                                                                 </file>
+  </xliff>                                                                                                </xliff>
+  ```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 4. run app - use other language localization (ru)
+  ```shell
+  npm run start:ru
+  ```

@@ -13,6 +13,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ru": "src/i18n/messages.ru.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -60,6 +66,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "ru": {
+              "localize": ["ru"]
             }
           },
           "defaultConfiguration": "production"
@@ -72,6 +81,9 @@
             },
             "development": {
               "browserTarget": "lokalise-demo:build:development"
+            },
+            "ru": {
+              "browserTarget": "lokalise-demo:build:ru"
             }
           },
           "defaultConfiguration": "development"
